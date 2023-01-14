@@ -1,0 +1,61 @@
+{% extends 'admin/dashboard.html' %} {% block content %}
+<section class="content-main">
+
+    <div class="content-header">
+        <h2 class="content-title">Users list</h2>
+
+    </div>
+
+    <div class="card mb-4">
+        <header class="card-header">
+            <div class="row gx-3">
+                <div class="col-lg-4 col-md-6 me-auto">
+                    <input type="text" placeholder="Search..." class="form-control">
+                </div>
+
+            </div>
+        </header>
+        <!-- card-header end// -->
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#ID</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col" class="text-end"> Action </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user_data in user_data %}
+                        <tr>
+                            <td>{{user_data.id}}</td>
+                            <td><b>{{user_data.username}}</b></td>
+                            <td>{{user_data.first_name}}</td>
+                            <td>{{user_data.last_name}}</td>
+                            <td>{{user_data.email}}</td>
+
+                            <td class="text-end">
+                                {% if user_data.is_active %}
+                                <a class="text-danger" href="{% url 'userblock' user_data.id %}" style="font-size: 30px;"><i class="fas fa-ban"></i></a> {% else %}
+                                <a class="text-danger" href="{% url 'userunblock' user_data.id %}" style="font-size: 30px;"><i class="far fa-circle"></i></a> {% endif %}
+
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- table-responsive //end -->
+        </div>
+        <!-- card-body end// -->
+    </div>
+    <!-- card end// -->
+
+
+</section>
+<!-- content-main end// -->
+{% endblock %}

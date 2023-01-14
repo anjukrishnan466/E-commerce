@@ -1,0 +1,339 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="en">
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Norda - Minimal eCommerce HTML Template</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.png' %}">
+
+    <!-- All CSS is here
+	============================================ -->
+
+    <link rel="stylesheet" href="{% static 'css/vendor/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor/signericafat.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor/cerebrisans.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor/simple-line-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor/elegant.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor/linear-icon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/plugins/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'css/plugins/easyzoom.css' %}">
+    <link rel="stylesheet" href="{% static 'css/plugins/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/plugins/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/plugins/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/plugins/jquery-ui.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+
+</head>
+
+<body>
+
+    <div class="main-wrapper">
+        <header class="header-area">
+            <div class="container">
+                <div class="header-large-device">
+                    <div class="header-top header-top-ptb-1 border-bottom-1">
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-5">
+                                <div class="header-offer-wrap">
+                                </div>
+                            </div>
+                            <div class="col-xl-8 col-lg-7">
+                                <div class="header-top-right">
+                                    <div class="same-style-wrap">
+                                        
+                                        <div class="same-style same-style-border currency-wrap">
+                                            <i class="icon-user"></i>
+                                            <a class="currency-dropdown-active" href="#">My Account <i
+                                                    class="icon-arrow-down"></i></a>
+                                            <div class="currency-dropdown">
+                                                <ul>
+                                                    {% if user.is_authenticated %}
+                                                    <li><a href="#">Profile</a></li>
+                                                    <li><a href="{% url 'orders' %}">My orders</a></li>
+                                                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                                                    {%else%}
+                                                    <li><a href="{% url 'login' %}">Login/<br>register</a></li>
+                                                    {%endif%}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-bottom">
+                        <div class="row align-items-center">
+                            <div class="col-xl-2 col-lg-2">
+                                <div class="logo">
+                                    <a href="{% url 'home' %}"><img src="{% static 'images/logo/logo.png' %}" alt="logo"></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-8 col-lg-7">
+                                <div class="main-menu main-menu-padding-1 main-menu-lh-1">
+                                    <nav>
+                                        <ul>
+                                            <li><a href="{% url 'home' %}">HOME </a>
+                                               
+                                            </li>
+                                            <li><a href="{% url 'product' %}">PRODUCTS </a>
+                                                
+                                            </li>
+                                            
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-3">
+                                <div class="header-action header-action-flex header-action-mrg-right">
+                                    
+                                    <div class="same-style-2">
+                                        <a href="#"><i class="icon-heart"></i><span
+                                                class="pro-count red"></span></a>
+                                    </div>
+                                    <div class="same-style-2 header-cart">
+                                        <a class="cart-active" href="{% url 'cart' %}">
+                                            <i class="icon-basket-loaded"></i><span class="pro-count red">{{count}}</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-small-device small-device-ptb-1">
+                    <div class="row align-items-center">
+                        <div class="col-5">
+                            <div class="mobile-logo">
+                                <a href="{%url 'home' %}">
+                                    <img alt="" src="{% static 'images/logo/logo.png' %}">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-7">
+                            <div class="header-action header-action-flex">
+                                
+                                <div class="same-style-2">
+                                    <a href="#"><i class="icon-heart"></i><span class="pro-count red"></span></a>
+                                </div>
+                                <div class="same-style-2 header-cart">
+                                    <a class="cart-active" href="{% url 'cart' %}">
+                                        <i class="icon-basket-loaded"></i><span class="pro-count red">{{count}}</span>
+                                    </a>
+                                </div>
+                                <div class="same-style-2 main-menu-icon">
+                                    <a class="mobile-header-button-active" href="#"><i class="icon-menu"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Mobile menu start -->
+        <div class="mobile-header-active mobile-header-wrapper-style">
+            <div class="clickalbe-sidebar-wrap">
+                <a class="sidebar-close"><i class="icon_close"></i></a>
+                <div class="mobile-header-content-area">
+                    <div class="header-offer-wrap mobile-header-padding-border-4">
+                    </div>
+                    
+                    <div class="mobile-menu-wrap mobile-header-padding-border-2">
+                        <!-- mobile menu start -->
+                        <nav>
+                            <ul class="mobile-menu">
+                                <li class="menu-item-has-children"><a href="{%url 'home' %}">Home</a>
+                                   
+                                </li>
+                                <li class="menu-item-has-children "><a href="{% url 'product' %}">Products</a>
+                                    
+                                </li>
+                                
+                            </ul>
+                        </nav>
+                        <!-- mobile menu end -->
+                    </div>
+                    <div class="mobile-header-info-wrap mobile-header-padding-border-3">
+                        
+                        <div class="single-mobile-header-info">
+
+                            <a class="mobile-currency-active" href="#">My accounts <span><i
+                                        class="icon-arrow-down"></i></span></a>
+                            <div class="lang-curr-dropdown curr-dropdown-active">
+                                <ul>
+                                    {% if user.is_authenticated %}
+                                    <li><a href="#">Profile</a></li>
+                                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                                    {% else %}
+
+                                    <li><a href="{% url 'login' %}">Login/<br>register</a></li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mobile-contact-info mobile-header-padding-border-4">
+                        <ul>
+                            <li><i class="icon-phone "></i> (+612) 2531 5600</li>
+                            <li><i class="icon-envelope-open "></i> norda@domain.com</li>
+                            <li><i class="icon-home"></i> PO Box 1622 Colins Street West Australia</li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- mini cart start -->
+
+        {% block content %}
+        <div class="breadcrumb-area bg-gray">
+            <div class="container">
+                <div class="breadcrumb-content text-center">
+                    <ul>
+                        <li>
+                            <a href="{%url 'home' %}">Home</a>
+                        </li>
+                        <li class="active">register </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="login-register-area pt-115 pb-120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-md-12 ms-auto me-auto">
+                        <div class="login-register-wrapper">
+                            <div class="login-register-tab-list nav">
+                                <a class="active" data-bs-toggle="tab" href="#lg1">
+                                    <h4> register </h4>
+                                </a>
+                               
+                            </div>
+                            <div class="tab-content">
+                                
+                                <div id="lg2" class="tab-pane active">
+                                    <div class="login-form-container">
+                                        <div class="login-register-form">
+                                            <form action="{%url 'register' %}" method="post">
+                                                {% csrf_token %}
+                                                <input type="text" name="user-firstname" placeholder="First name" id="firstname" required>
+                                                <div id="check1" style="color: red;">
+                                                </div>
+                                                <input type="text" name="user-lastname" placeholder="Last name" id="lastname" required>
+                                                <div id="check5" style="color: red;">
+                                                </div>
+                                                <input name="user-email" placeholder="Email" type="email" id="emailfield" required>
+                                                <div id="check2" style="color: red;">
+                                                </div>
+                                                <input type="text" name="user-name" placeholder="Username" id="username" required>
+                                                <div id="check6" style="color: red;">
+                                                </div>
+                                                <input type="password" name="user-password" placeholder="Password" id="passwordfield" required>
+                                                <div id="check3" style="color: red;">
+                                                </div>
+                                                <input type="password" name="confirm-password" placeholder="confirm Password" id="passwordfield1" required>
+                                                <div id="check4" style="color: red;">
+                                                </div>
+                                                <input type="text" name="user-referral" placeholder="referral code">
+                                                <div class="button-box" id="submitbtn">
+                                                    <button type="submit" id="submit-btn ">Register</button>
+                                                </div>
+                                                <div class=" pt- 5 ">
+                                                    <span>Already have Account?</span><a href="{% url 'login' %}"><b
+                                                            style="color: red; padding-left: 5px; ">login</b></a>
+                                                </div>
+                                            </form>
+                                            {% if messages %} {% for message in messages %} {% if message.tags == "success" %}
+                                            <div class="alert alert-success ">{{ message }}</div>
+                                            {% elif message.tags == "error" %}
+                                            <div class="alert alert-danger ">{{ message }}</div>
+                                            {% endif %} {% endfor %} {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+        <footer class="footer-area bg-gray pb-30 ">
+            <div class="container ">
+                <div class="row " style="padding-top: 20px ; ">
+                    <div class="col-lg-6 col-md-6 ">
+                        <div class="contact-info-wrap ">
+                            <div class="footer-logo ">
+                                <a href="# "><img src="{% static 'images/logo/logo.png' %} " alt="lo go "></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 ">
+                        <div class="footer-right-wrap ">
+                            <div class="footer-menu ">
+                                <nav>
+                                    <ul>
+                                        <div class="social-style-2 social-style-2-mrg ">
+                                            <a href="# "><i class="social_twitte r "></i></a>
+                                            <a href="# "><i class="social_faceboo k "></i></a>
+                                            <a href="# "><i class="social_googleplu s "></i></a>
+                                            <a href="# "><i class="social_instagra m "></i></a>
+                                            <a href="# "><i class="social_youtub e "></i></a>
+                                        </div>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="copyright text-center ">
+                        <p>Copyright © 2021 HasThemes | <a href="https://hasthemes.com/ ">Built with <span>Norda</span>
+                                by HasThemes</a>.</p>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </footer>
+    </div>
+
+    <!-- All JS is here
+============================================ -->
+
+    <script src="{% static '/js/vendor/modernizr-3.11.7.min.js' %} "></script>
+    <script src="{% static '/js/vendor/jquery-v3.6.0.min.js' %} "></script>
+    <script src="{% static '/js/vendor/jquery-migrate-v3.3.2.min.js' %} "></script>
+    <script src="{% static '/js/vendor/popper.min.js' %} "></script>
+    <script src="{% static '/js/vendor/bootstrap.min.js' %} "></script>
+    <script src="{% static '/js/plugins/slick.js' %} "></script>
+    <script src="{% static '/js/plugins/jquery.syotimer.min.js' %} "></script>
+    <script src="{% static '/js/plugins/jquery.instagramfeed.min.js' %} "></script>
+    <script src="{% static '/js/plugins/jquery.nice-select.min.js' %} "></script>
+    <script src="{% static '/js/plugins/wow.js' %} "></script>
+    <script src="{% static '/js/plugins/jquery-ui-touch-punch.js' %} "></script>
+    <script src="{% static '/js/plugins/jquery-ui.js' %} "></script>
+    <script src="{% static '/js/plugins/magnific-popup.js' %} "></script>
+    <script src="{% static '/js/plugins/sticky-sidebar.js' %} "></script>
+    <script src="{% static '/js/plugins/easyzoom.js' %} "></script>
+    <script src="{% static '/js/plugins/scrollup.js' %} "></script>
+    <script src="{% static '/js/plugins/ajax-mail.js' %} "></script>
+    <script src="{% static '/js/plugins/ajax-mail.js' %} "></script>
+    <!-- Main JS -->
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/validation.js' %}">
+    </script>
+</body>
+
+
+
+
+</html>

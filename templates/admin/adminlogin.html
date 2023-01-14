@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Sample title - Ecommerce admin dashboard template</title>
+
+    <link href="{% static 'admin/images/favicon.ico' %}" rel="shortcut icon" type="image/x-icon">
+
+    <link href="{% static 'admin/css/bootstrapf9e3.css' %}" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" href="{% static 'admin/fonts/material-icon/css/round.css' %}" />
+
+    <!-- custom style -->
+    <link href="{% static 'admin/css/uif9e3.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'admin/css/responsivef9e3.css' %}" rel="stylesheet" />
+
+</head>
+
+<body>
+
+    <b class="screen-overlay"></b>
+
+    <main>
+        <header class="main-header navbar">
+            <div class="col-brand">
+                <a href="" class="brand-wrap">
+                    <img src="{% static 'admin/images/logo.svg' %}" height="46" class="logo" alt="Ecommerce dashboard template">
+                </a>
+            </div>
+            <div class="col-nav">
+                <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i class="md-28 material-icons md-menu"></i> </button>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link btn-icon" onclick="darkmode(this)" title="Dark mode" href="#"> <i class="material-icons md-nights_stay"></i> </a>
+                    </li>
+                   
+                </ul>
+            </div>
+        </header>
+
+        <section class="content-main">
+
+            <!-- ============================ COMPONENT LOGIN   ================================= -->
+            <div class="card shadow mx-auto" style="max-width: 380px; margin-top:100px;">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Sign in</h4>
+                    <form action="{% url 'adminhome' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <input class="form-control" placeholder="Username or email" type="text" name="username" required>
+                        </div>
+                        <!-- form-group// -->
+                        <div class="mb-3">
+                            <input class="form-control" placeholder="Password" type="password" name="password" required>
+                        </div>
+                        <!-- form-group// -->
+
+                        <div class="mb-3">
+                            <a href="#" class="float-end">Forgot password?</a>
+                            <label class="form-check"> 
+            	<input type="checkbox" class="form-check-input" checked=""> 
+            	<span class="form-check-label">Remember</span> 
+            </label>
+                        </div>
+                        <!-- form-group form-check .// -->
+                        <div class="mb-4">
+                            <button type="submit" class="btn btn-primary w-100"> Login  </button>
+                        </div>
+                        <!-- form-group// -->
+                    </form>
+
+                    {% if messages %} {% for message in messages %} {% if message.tags == "success" %}
+                    <div class="alert alert-success">{{ message }}</div>
+                    {% elif message.tags == "error" %}
+                    <div class="alert alert-danger">{{ message }}</div>
+                    {% endif %} {% endfor %} {% endif %}
+                   
+
+
+                </div>
+                <!-- card-body.// -->
+            </div>
+            <!-- card .// -->
+
+
+            <!-- ============================ COMPONENT LOGIN  END.// ================================= -->
+
+
+
+
+        </section>
+        <!-- content-main end// -->
+    </main>
+    <script type="text/javascript">
+        if (localStorage.getItem("darkmode")) {
+            var body_el = document.body;
+            body_el.className += 'dark';
+        }
+    </script>
+
+    <script src="{% static 'admin/js/jquery-3.5.0.min.js' %}"></script>
+    <script src="{% static 'admin/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Custom JS -->
+    <script src="{% static 'admin/js/scriptc619.js?v=1.0' %}"></script>
+
+</body>
+
+
+
+</html>

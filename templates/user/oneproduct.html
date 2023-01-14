@@ -1,0 +1,178 @@
+{% extends 'user/login.html' %} {% load static %} {% block content %}
+<div class="breadcrumb-area bg-gray">
+    <div class="container">
+        <div class="breadcrumb-content text-center">
+            <ul>
+                <li>
+                    <a href="">Home</a>
+                </li>
+                <li class="active">product details </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="product-details-area pt-120 pb-115">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+
+                <div class="product-details-tab">
+                    <div class="product-dec-right pro-dec-big-img-slider">
+
+                        <div class="easyzoom-style">
+
+                            <figure class="zoom" onmousemove="zoom(event)" style="background-image: url({{product.image1.url}})">
+                                <img src="{{product.image1.url}}" alt=""></figure>
+
+                            <a class="easyzoom-pop-up img-popup" href="{{product.image1.url}}"><i
+                                    class="icon-size-fullscreen"></i></a>
+                        </div>
+                        <div class="easyzoom-style">
+                            <figure class="zoom" onmousemove="zoom(event)" style="background-image: url({{product.image2.url}})">
+                                <img src="{{product.image2.url}}" alt=""></figure>
+
+                            <a class="easyzoom-pop-up img-popup" href="{{product.image2.url}}"><i
+                                    class="icon-size-fullscreen"></i></a>
+                        </div>
+                        <div class="easyzoom-style">
+
+                            <figure class="zoom" onmousemove="zoom(event)" style="background-image: url({{product.image3.url}})">
+                                <img src="{{product.image3.url}}" alt=""></figure>
+                            <a class="easyzoom-pop-up img-popup" href="{{product.image3.url}}"><i
+                                    class="icon-size-fullscreen"></i></a>
+                        </div>
+                        <div class="easyzoom-style">
+
+                            <figure class="zoom" onmousemove="zoom(event)" style="background-image: url({{product.image4.url}})">
+                                <img src="{{product.image4.url}}" alt=""></figure>
+                            <a class="easyzoom-pop-up img-popup" href="{{product.image4.url}}"><i
+                                    class="icon-size-fullscreen"></i></a>
+                        </div>
+                        <div class="easyzoom-style">
+                            <div class="easyzoom easyzoom--overlay">
+                                <a href="{{product.image1.url}}">
+                                    <img src="{{product.image1.url}}" alt="">
+                                </a>
+                            </div>
+                            <a class="easyzoom-pop-up img-popup" href="{{product.image1.url}}"><i
+                                    class="icon-size-fullscreen"></i></a>
+                        </div>
+                    </div>
+                    <div class="product-dec-left product-dec-slider-small-2 product-dec-small-style2">
+                        <div class="product-dec-small active">
+                            <img src="{{product.image1.url}}" alt="">
+                        </div>
+                        <div class="product-dec-small">
+                            <img src="{{product.image2.url}}" alt="">
+                        </div>
+                        <div class="product-dec-small">
+                            <img src="{{product.image3.url}}" alt="">
+                        </div>
+                        <div class="product-dec-small">
+                            <img src="{{product.image4.url}}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                {% if product.product_offer %}
+
+                <h4 style="color: red; background-color: white; padding:5px;text-align: center;"><b>{{product.product_offer}}</b></h4>
+                {% endif %}
+                <div class="product-details-content pro-details-content-mt-md">
+                    <h2>{{product.product_name}}</h2>
+                    <div class="product-ratting-review-wrap">
+                        <div class="product-ratting-digit-wrap">
+                            <div class="product-ratting">
+                                <i class="icon_star"></i>
+                                <i class="icon_star"></i>
+                                <i class="icon_star"></i>
+                                <i class="icon_star"></i>
+                                <i class="icon_star"></i>
+                            </div>
+                            <div class="product-digit">
+                                <span>5.0</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <p>Seamlessly predominate enterprise metrics without performance based process improvements.</p>
+                    <div class="pro-details-price">
+                        {% if product.product_offer %}
+                        <span class="new-price">${{product.product_offer_price}}</span>
+                        <span class="old-price">${{product.price}}</span> {% else %}
+                        <span>${{ product.price }}</span> {% endif %}
+
+                    </div>
+
+                </div>
+
+                <div class="product-details-meta">
+                    <ul>
+                        <li><span>Categories:</span> <a href="#">{{product.category.category_name}}</a> /<a href="#">{{product.sub_category.sub_category_name}}</a> /<a href="#">{{product.brand.brand_name}}</a></li>
+
+                    </ul>
+                </div>
+                <div class="pro-details-action-wrap py-4">
+                    <div class="row">
+                        <div class="pro-details-add-to-cart mycart col text-end" data-product_id={{product.id}} data-action="add">
+                            <a title="Add to Cart" href="#" class="btn" style="background-color: red; color: white;">Add To Cart </a>
+                        </div>
+                        <div class="pro-details-add-to-cart col">
+                            <a title="Add to Cart" href="{% url 'checkout' product.id %}" class="btn" style="background-color: red; color: white;">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="description-review-wrapper pb-110">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="dec-review-topbar nav mb-45">
+                    <a class="active" data-bs-toggle="tab" href="#des-details1">Description</a>
+                    <a data-bs-toggle="tab" href="#des-details2">Specification</a>
+
+                </div>
+                <div class="tab-content dec-review-bottom">
+                    <div id="des-details1" class="tab-pane active">
+                        <div class="description-wrap">
+
+                            <p>{{product.description}}</p>
+                        </div>
+                    </div>
+                    <div id="des-details2" class="tab-pane">
+                        <div class="specification-wrap table-responsive">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="title width1">Name</td>
+                                        <td>{{product.product_name}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="title width1">Categories</td>
+                                        <td>{{product.category.pk}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="title width1">Brand </td>
+                                        <td>{{product.brand.pk}}</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
